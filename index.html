@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title> Try It Yourself </title>
+   <style type="text/css">
+      * {
+         box-sizing: border-box;
+      }
+      html, body {
+         margin: 0;
+         padding: 0;
+         
+      }
+      .main{
+          overflow: hidden;
+          width: 100%;
+          height: 100vh;
+      }
+      .nav-bar {
+         background: lightgrey; 
+         width: 50%;
+         height: 100%;
+         position: fixed;
+         top: 0px; 
+         left: -200px; 
+         overflow-y: auto;
+         z-index: 3;
+         transition: 0.5s;
+      }
+      .nav-bar h3{
+          font-size: 20px;
+          margin-left: 90%;
+      }
+      .nav-bar a {
+         text-decoration: none;
+         color: black;
+         display: block;
+      }
+      .nav-bar > ul {
+         list-style-type: none;
+         margin: 0;
+         padding: 0;
+      }
+      .nav-bar > ul > li > a {
+         padding: 10px;
+         text-align: center;
+         background: lightgrey;
+         transition: 0.5s;
+      }
+     
+      .nav-bar .active {
+         background: #173459;
+         color: #f8f9f9;
+      }
+      .nav-bar li {
+         border-bottom: 1px solid #333;
+      }
+      .nav-bar li:last-child {
+         border: none;
+      }
+      .nav-bar li:first-child{
+          border-top: 1px solid #333;
+      }
+      
+      header{
+          height: 80px;
+          width: 100%;
+          position: absolute;
+          color: red;
+          font-size: 10px;
+          padding: 10px; 
+          display: flex;
+          justify-content: space-between;
+      }
+      header h1{
+          margin-left: 80%;
+      }
+      header h2{
+          font-size: 20px;
+          position: fixed;
+      }
+    
+      .content {
+         background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("./sample/img/showcase.jpg");
+         background-position: center;
+         background-size: cover;
+         width: 100%;
+         height: 100vh;
+         padding-top: 150px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: cente;
+         
+         color: #fff;
+         text-align: center;
+      }
+      .content h1{
+         font-size: 60px;
+         font-weight: 700;
+         line-height: 70px;
+      }
+      .content p{
+         margin-top: -40px;
+      }
+      .btn{
+        position: relative;
+        
+        background: transparent;
+        border: 1px solid #fff;
+        width: 170px;
+        height:50px;
+        border-radius: 50px; 
+        color: #fff;
+        font-size: 16px;
+        margin-top: 20px;
+        z-index: 2;
+        overflow: hidden;
+      }
+      .btn::after{
+          content: "";
+          position: absolute;
+          background: green;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0%;
+          border-radius: 50px;
+          z-index: -1;
+          transition: 0.4s;
+      }
+      .btn:hover{
+          border: none;
+      }
+      .btn:hover::after{
+          width: 100%;  
+      }
+     .courses{
+       width: 100%;
+       flex-direction: column;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+       margin-top: 20px;
+     }
+    .courses h1{
+      font-size: 30px;
+    }
+    .row{
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+    }
+    .course_col{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #fbc161b7;
+        margin: 15px auto;
+        width: 80%;
+        height: 200px;
+        border-radius: 10px;
+        padding 10px;
+        box-shadow: 2px 2px 3px black;
+        transition: .5s;
+        
+    }
+    .course_col:hover{
+        transform: translateY(-15px);
+       
+    }
+    
+   </style>
+</head>
+<body>
+  <section class="main">
+   <div class="nav-bar" id="nav-bar">
+       <h3 id="hide" onclick="hideMenu()">x</h3>
+      <ul>
+         <li><a href="#" class="tab active" onclick="activetab()"> Home </a></li>
+         <li><a href="#" class="tab" onclick="activetab()"> About </a></li>
+         <li><a href="#" class="tab" onclick="activetab()"> Articles </a></li>
+         <li><a href="#" class="tab" onclick="activetab()"> Gallery </a></li>
+      </ul>
+   </div>
+   <header>
+       <h2 id="menu" onclick="showMenu()">three</h2>
+       <h1>tutorials Point</h1>
+   </header>
+   <div class="content">
+       <h1>Add your skills</h1>
+      <p> This is where the content of the page goes.<br> Its container has . </p>
+      <button type="button" class="btn">Explore now</button>
+   </div>
+ </section>
+ <section class="courses">
+     <h1>Courses</h1>
+     <div class="row">
+         <div class="course_col">
+             <h2>Data science</h2>
+             <p>this is the course where you </p>
+         </div>
+         <div class="course_col">
+             <h2>Programing</h2>
+             <p>this is the course where you jsj jsbd jxbdb jdvrh hdbdb </p>
+             
+         </div>
+         <div class="course_col">
+             <h2>Self Develpoment</h2>
+             <p>this is the course where you jsj jsbd jxbdb jdvrh hdbdb </p>
+             
+         </div>
+     </div>
+ </section>
+ 
+ 
+   <script>
+       var navBar = document.getElementById("nav-bar");
+       var tablists=document.getElementsByClassName("tab");
+       function activetab(){
+          for(tab of tablists){
+            tab.classList.remove("active");
+          }
+            
+      event.currentTarget.classList.add("active");
+       }
+       function showMenu(){
+          navBar.style.left="0";
+       }
+      function hideMenu(){
+          navBar.style.left="-200px";
+       } 
+   </script>
+</body>
+
+</html>
